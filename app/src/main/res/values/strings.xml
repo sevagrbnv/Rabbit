@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Rabbit</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="good">Good</string>
+    <string name="bad">Bad</string>
+    <string name="no">No</string>
+    <string name="save">Save</string>
+    <string name="period">Period</string>
+    <string name="count">Count</string>
+    <string name="priority">Count</string>
+    <string name="no_priority">No priority</string>
+    <string name="low_priority">Low priority</string>
+    <string name="medium_priority">Medium priority</string>
+    <string name="high_priority">High priority</string>
+    <string name="edit_mode">Edit mode</string>
+    <string name="add_mode">Add mode</string>
+
 </resources>
