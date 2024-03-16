@@ -1,5 +1,6 @@
-package ru.sevagrbnv.rabbit.presentation.recyclerView
+package ru.sevagrbnv.rabbit.presentation.habitList.recyclerView
 
+import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -9,7 +10,7 @@ import ru.sevagrbnv.rabbit.R
 import ru.sevagrbnv.rabbit.databinding.HabitListItemBinding
 import ru.sevagrbnv.rabbit.domain.Habit
 
-class HabitListAdapter: ListAdapter<Habit, HabitViewHolder>(
+class HabitListAdapter : ListAdapter<Habit, HabitViewHolder>(
     HabitDiffCallBack()
 ) {
 
@@ -31,10 +32,11 @@ class HabitListAdapter: ListAdapter<Habit, HabitViewHolder>(
         val binding = holder.binding as HabitListItemBinding
         binding.itemTitle.text = item.title
         binding.itemDescription.text = item.description
-        binding.itemPriority.text = item.priority.toString()
-        binding.itemType.text = item.type.toString()
-        binding.itemPeriod.text = "${item.count} in ${item.period}"
-        binding.root.setBackgroundColor(item.color)
+        binding.itemPriority.text = item.priority
+        binding.itemType.text = item.type
+        binding.itemPeriod.text =
+            holder.itemView.context.getString(R.string.count_period, item.count, item.period)
+        binding.color.backgroundTintList = ColorStateList.valueOf(item.color)
         binding.root.setOnClickListener {
             onItemClickListener?.invoke(item)
         }

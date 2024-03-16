@@ -12,10 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Rabbit"
         tools:targetApi="31">
-        <activity
-            android:name="ru.sevagrbnv.rabbit.presentation.EditActivity"
-            android:exported="true">
-        </activity>
 
         <activity
             android:name="ru.sevagrbnv.rabbit.presentation.MainActivity"

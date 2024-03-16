@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.EditActivity">
+
+        <ScrollView
+            android:id="@+id/colorPickerScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="8dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/title" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutDescription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/description"
+                        android:minLines="3" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:prompt="@string/priority" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <RadioGroup
+                    android:id="@+id/typePicker"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:checkedButton="@id/radioGood">
+
+                    <RadioButton
+                        android:id="@+id/radioGood"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/good" />
+
+                    <RadioButton
+                        android:id="@+id/radioBad"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/bad" />
+
+                </RadioGroup>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutCount"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/count"
+                        android:inputType="number" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/inputLayoutPeriod"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/editTextPeriod"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="top"
+                        android:hint="@string/period" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <RadioGroup
+                        android:id="@+id/colorPicker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:checkedButton="@id/color1">
+
+                        <RadioButton
+                            android:id="@+id/color1"
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                        <RadioButton
+                            style="@style/colour_picker"
+                            android:background="@drawable/colour_picker" />
+
+                    </RadioGroup>
+
+                </HorizontalScrollView>
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="32dp" />
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/saveButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_margin="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/save" />
+
+    </RelativeLayout>
+</layout>

@@ -1,4 +1,4 @@
-package ru.sevagrbnv.rabbit.presentation.recyclerView
+package ru.sevagrbnv.rabbit.presentation.habitList.recyclerView
 
 import androidx.recyclerview.widget.DiffUtil
 import ru.sevagrbnv.rabbit.domain.Habit

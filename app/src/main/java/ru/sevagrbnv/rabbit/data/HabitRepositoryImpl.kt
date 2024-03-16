@@ -10,8 +10,8 @@ object HabitRepositoryImpl : HabitRepository {
 
     private val habitDtoList = MutableLiveData<MutableList<HabitDto>>(mutableListOf())
     override fun addHabit(habit: Habit) {
-        val list = habitDtoList.value
-        list?.add(habit.toHabitDto())
+        val list = habitDtoList.value ?: mutableListOf()
+        list.add(habit.toHabitDto())
         habitDtoList.value = list
     }
 
@@ -21,9 +21,9 @@ object HabitRepositoryImpl : HabitRepository {
 
     override fun editHabit(habit: Habit) {
         val oldHabitId = habitDtoList.value?.indexOf(habitDtoList.value?.find { it.id == habit.id })
-        val list = habitDtoList.value
+        val list = habitDtoList.value ?: mutableListOf()
         if (oldHabitId != null)
-            list?.set(oldHabitId, habit.toHabitDto())
+            list.set(oldHabitId, habit.toHabitDto())
         habitDtoList.value = list
     }
 
@@ -32,13 +32,7 @@ object HabitRepositoryImpl : HabitRepository {
             it.toListHabit()
         }
 
-    override fun getBadHabits(): LiveData<List<Habit>> =
-        MutableLiveData<List<HabitDto>>(habitDtoList.value?.filter { it.type == "Bad" }).map {
-            it.toListHabit()
-        }
+    override fun getHabitsByType(type: String): LiveData<List<Habit>> =
+        habitDtoList.map { it.toListHabit().filter { it.type == type } }
 
-    override fun getGoodHabits(): LiveData<List<Habit>> =
-        MutableLiveData<List<HabitDto>>(habitDtoList.value?.filter { it.type == "Good" }).map {
-            it.toListHabit()
-        }
 }

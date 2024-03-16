@@ -1,4 +1,4 @@
-package ru.sevagrbnv.rabbit.presentation
+package ru.sevagrbnv.rabbit.presentation.addEdit
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import ru.sevagrbnv.rabbit.data.HabitRepositoryImpl
 import ru.sevagrbnv.rabbit.domain.Habit
 
-class EditViewModel : ViewModel() {
+class AddEditViewModel : ViewModel() {
 
     private val _habit = MutableLiveData<Habit>()
     val habit: LiveData<Habit>

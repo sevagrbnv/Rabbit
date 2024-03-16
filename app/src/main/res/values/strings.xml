@@ -15,5 +15,14 @@
     <string name="high_priority">High priority</string>
     <string name="edit_mode">Edit mode</string>
     <string name="add_mode">Add mode</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="count_period">%1$d in %2$s</string>
+    <string name="home">Home</string>
+    <string name="about">About</string>
+    <string name="developed_as_part_of_doubletapp_training">Developed as part of Doubletapp training</string>
+
+    <string name="navigation_drawer_open">open_drawer</string>
+    <string name="navigation_drawer_close">close_drawer</string>
 
 </resources>

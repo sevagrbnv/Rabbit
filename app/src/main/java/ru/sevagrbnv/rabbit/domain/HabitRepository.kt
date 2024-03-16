@@ -12,7 +12,6 @@ interface HabitRepository {
 
     fun getAllHabits(): LiveData<List<Habit>>
 
-    fun getBadHabits(): LiveData<List<Habit>>
+    fun getHabitsByType(type: String): LiveData<List<Habit>>
 
-    fun getGoodHabits(): LiveData<List<Habit>>
 }

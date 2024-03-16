@@ -1,4 +1,4 @@
-package ru.sevagrbnv.rabbit.presentation
+package ru.sevagrbnv.rabbit.presentation.addEdit
 
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
@@ -31,22 +31,19 @@ class GradientColorPicker(private val steps: Int) {
     companion object {
 
         private val startColor = floatArrayOf(0f, 1f, 1f)
-        private val color2 = floatArrayOf(60f, 1f, 1f)
-        private val color3 = floatArrayOf(120f, 1f, 1f)
-        private val color4 = floatArrayOf(180f, 1f, 1f)
-        private val color5 = floatArrayOf(240f, 1f, 1f)
-        private val color6 = floatArrayOf(300f, 1f, 1f)
         private val endColor = floatArrayOf(360f, 1f, 1f)
+
+        private fun getArrayList(): IntArray {
+            val list = mutableListOf<Int>()
+            repeat(7) {
+                list.add(Color.HSVToColor(floatArrayOf((it * 60).toFloat(), 1f, 1f)))
+            }
+            return list.toIntArray()
+        }
 
         val gradient = GradientDrawable(
             GradientDrawable.Orientation.LEFT_RIGHT,
-            intArrayOf(
-                Color.HSVToColor(startColor),
-                Color.HSVToColor(color2),
-                Color.HSVToColor(color3),
-                Color.HSVToColor(color4),
-                Color.HSVToColor(color5),
-                Color.HSVToColor(color6),
-                Color.HSVToColor(endColor)))
+            getArrayList()
+        )
     }
 }

@@ -1,59 +1,83 @@
 package ru.sevagrbnv.rabbit.presentation
 
-import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import ru.sevagrbnv.rabbit.databinding.ActivityMainBinding
-import ru.sevagrbnv.rabbit.presentation.EditActivity.Companion.ADD_MODE
-import ru.sevagrbnv.rabbit.presentation.EditActivity.Companion.EDIT_MODE
-import ru.sevagrbnv.rabbit.presentation.EditActivity.Companion.ITEM_ID
-import ru.sevagrbnv.rabbit.presentation.EditActivity.Companion.SCREEN_MODE
-import ru.sevagrbnv.rabbit.presentation.recyclerView.HabitListAdapter
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
+import com.google.android.material.navigation.NavigationView
+import ru.sevagrbnv.rabbit.R
+
 
 class MainActivity : AppCompatActivity() {
 
-    private var binding: ActivityMainBinding? = null
-    private var viewModel: MainViewModel? = null
-    private var habitListAdapter: HabitListAdapter? = null
+    private val navController by lazy {
+        val navHost =
+            supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
+        navHost.navController
+    }
+
+    val toolbar by lazy { findViewById<Toolbar>(R.id.toolbar) }
+    val navView by lazy { findViewById<NavigationView>(R.id.navView) }
+    val drawerLayout by lazy { setDrawer(toolbar, navView) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding?.root)
+        setContentView(R.layout.activity_main)
+
+        setSupportActionBar(toolbar)
+
+        NavigationUI.setupActionBarWithNavController(this, navController, drawerLayout)
+    }
 
 
-        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
-        viewModel?.habitList?.observe(this) {
-            habitListAdapter?.submitList(it)
+    private fun setDrawer(toolbar: Toolbar, navView: NavigationView): DrawerLayout {
+        val drawerLayout = findViewById<DrawerLayout>(R.id.drawerLayout)
+
+        val toggle = ActionBarDrawerToggle(
+            this,
+            drawerLayout,
+            toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+
+        navView.setNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.nav_home -> {
+                    navController.popBackStack()
+                    navController.popBackStack()
+                    navController.navigate(R.id.viewPagerFragment)
+                }
+
+                R.id.nav_about -> {
+                    navController.navigate(R.id.aboutFragment)
+                }
+            }
+            drawerLayout.closeDrawer(GravityCompat.START)
+            true
         }
-        setRecView()
-        binding?.fab?.setOnClickListener {
-            startActivity(
-                Intent(this, EditActivity::class.java)
-                    .putExtra(SCREEN_MODE, ADD_MODE)
-            )
+        toggle.setToolbarNavigationClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                navController.popBackStack()
+            }
+        })
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            toggle.isDrawerIndicatorEnabled =
+                destination.id in setOf(R.id.viewPagerFragment)
         }
+
+        return drawerLayout
     }
 
-    private fun setRecView() {
-        habitListAdapter = HabitListAdapter()
-        binding?.recyclerView?.adapter = habitListAdapter
-        setItemClickListener()
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp() || super.onSupportNavigateUp()
     }
-
-    private fun setItemClickListener() {
-        habitListAdapter?.onItemClickListener = {
-            startActivity(Intent(this, EditActivity::class.java)
-                .putExtra(SCREEN_MODE, EDIT_MODE)
-                .putExtra(ITEM_ID, it.id))
-        }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        binding = null
-        viewModel = null
-        habitListAdapter = null
-    }
-
 }

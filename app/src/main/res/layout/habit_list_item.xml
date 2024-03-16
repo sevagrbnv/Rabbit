@@ -1,31 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        app:cardElevation="8dp">
 
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="2"
-            android:padding="16dp"
+            android:columnCount="3"
+            android:padding="8dp"
             android:rowCount="3">
+
+            <View
+                android:id="@+id/color"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_rowSpan="3"
+                android:layout_columnWeight="0.5"
+                android:layout_gravity="center"
+                android:background="@drawable/circle"
+                android:foregroundGravity="center"/>
 
             <TextView
                 android:id="@+id/itemTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="title" />
+                android:text="title"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/itemPriority"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
-                android:text="priority" />
+                android:text="priority"/>
 
             <TextView
                 android:id="@+id/itemDescription"
@@ -49,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:text="period" />
+
 
         </GridLayout>
 
